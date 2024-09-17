@@ -1,0 +1,30 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin: 10px 10px 10px 10px;
+}
+
+.navigation-details {
+  display: flex;
+  justify-content: baseline;
+  align-items: end;
+  flex-direction: row;
+  gap: 8px;
+  margin: 10px 10px 10px 10px;
+}
+
+.header-text {
+  font-size: 2rem;
+}
+
+.header-add {
+  color: var(--main-color);
+  font-size: 1.5rem;
+}
+
+.header-det {
+  color: var(--main-color);
+  font-size: 2rem;
+}
