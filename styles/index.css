@@ -2,6 +2,7 @@
 @import "fonts.css";
 @import "navigation.css";
 @import "articles.css";
+@import "add.css";
 
 :root {
   --main-color: #57b7f2;
