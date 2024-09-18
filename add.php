@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="form-box">
-          <form action="db.php" method="post">
+          <form action="utilites/db.php" method="post">
             <div class="form-row">
 
               <label class="form-label poppins-medium" for="title">Title</label>

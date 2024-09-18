@@ -1,3 +1,9 @@
+<?php
+include "utilities/wordMinConvert.php";
+include "db.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,25 +32,49 @@
 
   <div class="articles">
     <div class="articles-wrapper">
+      <?php
 
+      $pdo = db_connection();
+      $items = $pdo->query($count)->fetchColumn();
+
+      ?>
       <div class="articles-header">
         <h2 class="articles-header-text poppins-semibold">Stories</h2>
-        <p class="articles-header-subtext poppins-regular">21 articles</p>
+        <p class="articles-header-subtext poppins-regular"><?= $items ?> articles</p>
       </div>
       <ul class="box">
-        <li class="box-item">
-          <a href="./details.php">
+        <?php
 
-            <p class="box-item-cat poppins-regular">DESIGN</p>
-            <p class="box-item-title poppins-medium">10 keyboard types in iOS</p>
-            <p class="box-item-content">iOS provides several types of onscreen keyboards, each designed to facilate a
-              different situtation. Apple has 10+2 keyboards for iOS...</p>
-            <div class="box-item-footer">
-              <p class="box-item-footer-text poppins-light">24 June 2023</p>
-              <p class="box-item-footer-text poppins-light">6 min</p>
-            </div>
-          </a>
-        </li>
+
+
+        foreach ($pdo->query($select_all) as $row):
+          $id = $row["id"];
+          $words = explode(" ", $row["content"]);
+          $content_prev = "";
+          $date = explode(" ", $row["created_at"]);
+          $date = $date[0];
+
+
+          for ($i = 0; $i < 30; $i += 1) {
+            $content_prev .= $words[$i] . " ";
+          }
+
+          $content_prev .= "...";
+
+          ?>
+          <li class="box-item">
+            <a href=<?php echo "./details.php?id=$id" ?>>
+
+              <p class="box-item-cat poppins-regular"><?= strtoupper($row["topic"]) ?></p>
+              <p class="box-item-title poppins-medium"><?= $row["title"] ?></p>
+              <p class="box-item-content"><?= $content_prev ?></p>
+              <div class="box-item-footer">
+                <p class="box-item-footer-text poppins-light"><?= $date ?></p>
+                <p class="box-item-footer-text poppins-light"><?= wordMinConvert(count($words)) ?> min</p>
+              </div>
+            </a>
+          </li>
+        <?php endforeach; ?>
 
       </ul>
     </div>
