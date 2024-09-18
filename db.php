@@ -7,10 +7,12 @@ $dotenv->load();
 $dsn = $_ENV['DB_DSN'];
 $user = $_ENV['DB_USER'];
 $password = $_ENV['DB_PASSWORD'];
+$add_pass = $_ENV['ADD_PASS'];
 
 
 $select_all = "SELECT * FROM articles";
 $count = "SELECT COUNT (*) FROM articles";
+
 
 
 function db_connection()

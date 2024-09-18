@@ -3,6 +3,13 @@ include "./db.php";
 include "utilities/date_formatter.php";
 include "utilities/wordMinConvert.php";
 
+$data = db_select_by_id($_GET["id"]);
+$date = explode(" ", $data["created_at"])[0];
+$formatted = date_formatter($date);
+
+$words = explode(" ", $data["content"]);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -19,18 +26,8 @@ include "utilities/wordMinConvert.php";
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-  <title>Sati [placeholder]</title>
+  <title><?= $data["title"]; ?></title>
 </head>
-<?php
-
-$data = db_select_by_id($_GET["id"]);
-$date = explode(" ", $data["created_at"])[0];
-$formatted = date_formatter($date);
-
-$words = explode(" ", $data["content"]);
-
-
-?>
 
 <body>
   <div class="navigation-details">
@@ -60,9 +57,7 @@ $words = explode(" ", $data["content"]);
     </div>
   </div>
 
-  <footer class="footer poppins-regular">©2024 <a target="_blank" class="footer-a"
-      href="https://www.majkeloess.dev/">majkeloess</a>
-  </footer>
+
 </body>
 
 </html>

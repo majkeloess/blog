@@ -12,13 +12,13 @@
   width: 55%;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+
   gap: 20px;
 }
 .backarrow {
   font-size: 3rem;
-  border-radius: 8px;
   border-color: var(--main-color);
-  border: 2px;
 }
 
 .articles-header {
@@ -67,4 +67,21 @@
   font-size: 1.2rem;
   line-height: 24px;
   margin: 20px 0px 20px 0px;
+}
+
+@media (max-width: 768px) {
+  .articles-wrapper-det {
+    width: 100%;
+    gap: 5px;
+    justify-content: center;
+  }
+  .articles-header-text {
+    font-size: 2rem;
+  }
+  .backarrow {
+    font-size: 2rem;
+  }
+  .articles-wrapper {
+    width: 80%;
+  }
 }

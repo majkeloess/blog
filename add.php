@@ -35,15 +35,19 @@
           </div>
         </div>
         <div class="form-box">
-          <form action="utilites/db.php" method="post">
+          <form action="utilities/add_article.php" method="post">
             <div class="form-row">
 
               <label class="form-label poppins-medium" for="title">Title</label>
               <input class="input-smaller poppins-regular" type="text" id="title" name="title" required>
             </div>
             <div class="form-row">
-              <label class="form-label poppins-medium" for="type">Topic</label>
-              <input class="input-smaller poppins-regular" type="text" id="type" name="type" required>
+              <label class="form-label poppins-medium" for="topic">Topic</label>
+              <input class="input-smaller poppins-regular" type="text" id="topic" name="topic" required>
+            </div>
+            <div class="form-row">
+              <label class="form-label poppins-medium" for="password">Password</label>
+              <input class="input-smaller poppins-regular" type="password" id="password" name="password" required>
             </div>
             <div class="form-row">
               <label class="form-label poppins-medium" for="content">Content</label>
