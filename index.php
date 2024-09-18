@@ -1,7 +1,7 @@
 <?php
 include "utilities/wordMinConvert.php";
 include "db.php";
-
+include "utilities/date_formatter.php";
 ?>
 
 <!DOCTYPE html>
@@ -51,8 +51,10 @@ include "db.php";
           $id = $row["id"];
           $words = explode(" ", $row["content"]);
           $content_prev = "";
-          $date = explode(" ", $row["created_at"]);
-          $date = $date[0];
+          $date = explode(separator: " ", string: $row["created_at"]);
+
+
+          $formatted = date_formatter($date[0]);
 
 
           for ($i = 0; $i < 30; $i += 1) {
@@ -69,7 +71,7 @@ include "db.php";
               <p class="box-item-title poppins-medium"><?= $row["title"] ?></p>
               <p class="box-item-content"><?= $content_prev ?></p>
               <div class="box-item-footer">
-                <p class="box-item-footer-text poppins-light"><?= $date ?></p>
+                <p class="box-item-footer-text poppins-light"><?= $formatted ?></p>
                 <p class="box-item-footer-text poppins-light"><?= wordMinConvert(count($words)) ?> min</p>
               </div>
             </a>

@@ -1,5 +1,8 @@
 <?php
 include "./db.php";
+include "utilities/date_formatter.php";
+include "utilities/wordMinConvert.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +22,14 @@ include "./db.php";
   <title>Sati [placeholder]</title>
 </head>
 <?php
+
 $data = db_select_by_id($_GET["id"]);
+$date = explode(" ", $data["created_at"])[0];
+$formatted = date_formatter($date);
+
+$words = explode(" ", $data["content"]);
+
+
 ?>
 
 <body>
@@ -38,8 +48,8 @@ $data = db_select_by_id($_GET["id"]);
         <div class="text-header">
           <h2 class="articles-header-text poppins-semibold"><?= $data["title"] ?></h2>
           <div class="box-item-footer">
-            <p class="box-item-footer-text poppins-light">24 June 2023</p>
-            <p class="box-item-footer-text poppins-light">6 min</p>
+            <p class="box-item-footer-text poppins-light"><?= $formatted ?></p>
+            <p class="box-item-footer-text poppins-light"><?php echo wordMinConvert(count($words)); ?> min</p>
           </div>
         </div>
         <p class="text">
